@@ -10,22 +10,21 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author HOANG
+ * @author TUNGDUONG
  */
 public class DBConnect {
-
-    public static Connection getConnection() {
-        Connection cons = null;
+    
+    public static Connection getConnection(){
+        Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            cons = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/thucpham", "root", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoprau", "root", "1234");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return cons;
+        return conn;
     }
-
+    
     public static void main(String[] args) {
         System.out.println(getConnection());
     }

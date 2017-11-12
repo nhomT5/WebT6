@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package DAO;
 
 import DB.DBConnect;
 import java.sql.Connection;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Users;
+import Model.Users;
 import tools.MD5;
 
 /**
