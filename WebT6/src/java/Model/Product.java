@@ -16,15 +16,6 @@ public class Product {
     private String productName;
     private String productImage;
     private double productPrice;
-    private double productPromotionPrice;
-
-    public double getProductPromotionPrice() {
-        return productPromotionPrice;
-    }
-
-    public void setProductPromotionPrice(double productPromotionPrice) {
-        this.productPromotionPrice = productPromotionPrice;
-    }
     private String productDescription;
 
     public Product() {
@@ -36,7 +27,7 @@ public class Product {
         this.productName = productName;
         this.productImage = productImage;
         this.productPrice = productPrice;
-        this.productPromotionPrice = productPromotionPrice;
+ 
         this.productDescription = productDescription;
     }
 

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+    
 package Controller;
 
 import DAO.UsersDAO;
@@ -16,10 +12,7 @@ import javax.servlet.http.HttpSession;
 import Model.Users;
 import tools.MD5;
 
-/**
- *
- * @author HOANG
- */
+
 public class UsersServlet extends HttpServlet {
 
     UsersDAO usersDAO = new UsersDAO();

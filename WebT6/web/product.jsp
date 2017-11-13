@@ -5,15 +5,10 @@
 <%@page import="DAO.CategoryDAO"%>
 <%@page import="Model.Category"%>
 <html>
-    <head>
-        <title>Sản phẩm</title>
-        <script src="js/jquery.easydropdown.js"></script>
-        <jsp:include page="head.jsp"></jsp:include>
-        </head>
-        <body>
-        <%
+    <%
             ProductDAO productDAO = new ProductDAO();
             CategoryDAO categoryDAO = new CategoryDAO();
+            
             String category_id = "";
             if (request.getParameter("category") != null) {
                 category_id = request.getParameter("category");
@@ -24,6 +19,13 @@
                 session.setAttribute("cart", cart);
             }
         %>
+    <head>
+        <title>Thực Phẩm</title>
+        <script src="js/jquery.easydropdown.js"></script>
+        <jsp:include page="head.jsp"></jsp:include>
+        </head>
+        <body>
+        
         <jsp:include page="header.jsp"></jsp:include>
             <div class="mens"> 
                 <div class="main">
@@ -55,11 +57,12 @@
                                 </a>
                             </div>
                         </div>
-                                                <%}%>
+                        <%}%>
                     </div>
                     <div class="rsidebar span_1_of_left">
                         <h5 class="m_1">Sản phẩm</h5>
-                        <%                                                for (Category d : categoryDAO.getListAllCategory()) {
+                        <%                                                
+                            for (Category d : categoryDAO.getListAllCategory()) {
                         %>
                         <li><a href="product.jsp?category=<%=d.getCategoryID()%>"><%=d.getCategoryName()%></a></li>
                             <%

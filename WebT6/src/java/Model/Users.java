@@ -12,6 +12,7 @@ package Model;
 public class Users {
 
     private long userID;
+    private String userName;
     private String userEmail;
     private String userPass;
     private boolean userRole;
@@ -19,8 +20,9 @@ public class Users {
     public Users() {
     }
 
-    public Users(long userID, String userEmail, String userPass, boolean userRole) {
+    public Users(long userID, String userName, String userEmail, String userPass, boolean userRole) {
         this.userID = userID;
+        this.userName = userName;
         this.userEmail = userEmail;
         this.userPass = userPass;
         this.userRole = userRole;
@@ -32,6 +34,14 @@ public class Users {
 
     public void setUserID(long userID) {
         this.userID = userID;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserEmail() {

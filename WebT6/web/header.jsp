@@ -93,7 +93,7 @@
                 <div id="response"> </div>
             </div>
             <div class="tag-list">
-                <ul class="last"><li><a href="cart.jsp">Cart(<%=cart.countItem()%>)</a></li></ul>
+                <ul class="last"><li><a href="cart.jsp">Giỏ hàng(<%=cart.countItem()%>)</a></li></ul>
 
 
             </div>

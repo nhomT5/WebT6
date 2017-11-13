@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Controller;
 
 import DAO.ProductDAO;
@@ -16,10 +12,7 @@ import Model.Cart;
 import Model.Item;
 import Model.Product;
 
-/**
- *
- * @author HOANG
- */
+
 public class CartServlet extends HttpServlet {
     
     private final ProductDAO productDAO = new ProductDAO();
@@ -56,10 +49,10 @@ public class CartServlet extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("/shop/index.jsp");
+            response.sendRedirect("/shoprau/index.jsp");
         }
         session.setAttribute("cart", cart);
-        response.sendRedirect("/shop/index.jsp");
+        response.sendRedirect("/shoprau/index.jsp");
     }
     
 }
