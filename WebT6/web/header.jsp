@@ -52,7 +52,7 @@
                                             <%                                                                                        
                                                 for (Category c : categoryDAO.getListCategory()){
                                             %>
-                                            <li><a href="product.jsp?category=<%=c.getCategoryID()%>"><%=c.getCategoryName()%></a></li>
+                                            <li><a href="product.jsp?categoryID=<%=c.getCategoryID()%>&pages=1"><%=c.getCategoryName()%></a></li>
                                                 <%
                                                     }
                                                 %>

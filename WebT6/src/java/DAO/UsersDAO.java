@@ -42,7 +42,7 @@ public class UsersDAO {
     // phương thức thêm tài khoản
     public boolean insertUser(Users u) {
         Connection connection = DBConnect.getConnection();
-        String sql = "INSERT INTO users VALUES(?.?,?,?,?)";
+        String sql = "INSERT INTO users VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setLong(1, u.getUserID());

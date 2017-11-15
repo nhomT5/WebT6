@@ -17,18 +17,37 @@ public class Product {
     private String productImage;
     private double productPrice;
     private String productDescription;
+    private int tophot;
+    private int topnew;
 
     public Product() {
     }
 
-    public Product(long productID, long categoryID, String productName, String productImage, double productPrice, double productPromotionPrice,String productDescription) {
+    public Product(long productID, long categoryID, String productName, String productImage, double productPrice, double productPromotionPrice,String productDescription, int tophot, int topnew) {
         this.productID = productID;
         this.categoryID = categoryID;
         this.productName = productName;
         this.productImage = productImage;
         this.productPrice = productPrice;
- 
+        this.tophot = tophot;
+        this.topnew = topnew;
         this.productDescription = productDescription;
+    }
+
+    public int getTophot() {
+        return tophot;
+    }
+
+    public void setTophot(int tophot) {
+        this.tophot = tophot;
+    }
+
+    public int getTopnew() {
+        return topnew;
+    }
+
+    public void setTopnew(int topnew) {
+        this.topnew = topnew;
     }
 
     public long getProductID() {

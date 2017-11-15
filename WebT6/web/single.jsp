@@ -4,12 +4,14 @@
 <%@page import="Model.Category"%>
 <%@page import="DAO.CategoryDAO"%>
 <%@page import="Model.Cart"%>
+
 <!DOCTYPE HTML>
 <html>
     <%
         ProductDAO productDAO = new ProductDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
         Product product = new Product();
+
         String productID = "";
         if (request.getParameter("productID") != null) {
             productID = request.getParameter("productID");
@@ -23,6 +25,54 @@
     %>
     <head>
         <title><%=product.getProductName()%></title>
+
+        <script type="text/javascript">
+            $(window).load(function () {
+                $("#flexiselDemo1").flexisel();
+                $("#flexiselDemo2").flexisel({
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint: 480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint: 640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint: 768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+
+                $("#flexiselDemo3").flexisel({
+                    visibleItems: 5,
+                    animationSpeed: 1000,
+                    autoPlay: false,
+                    autoPlaySpeed: 3000,
+                    pauseOnHover: true,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint: 480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint: 640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint: 768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+
+            });
+        </script>
+        <script type="text/javascript" src="js/jquery.flexisel.js"></script>
         <jsp:include page="head.jsp"></jsp:include>
         </head>
         <body>
@@ -46,21 +96,13 @@
                             </div>
                             <p class="m_text2"><%=product.getProductDescription()%></p>
                         </div>
-                        <div class="clear"></div>	
-                        <div class="clients">
-                            <h3 class="m_3">10 Other Products in the same category</h3>
-                            <ul id="flexiselDemo3">
-                                <li><img src="images/s5.jpg" /><a href="#">Category</a><p>Rs 600</p></li>
-                                <li><img src="images/s6.jpg" /><a href="#">Category</a><p>Rs 850</p></li>
-                                <li><img src="images/s7.jpg" /><a href="#">Category</a><p>Rs 900</p></li>
-                                <li><img src="images/s8.jpg" /><a href="#">Category</a><p>Rs 550</p></li>
-                                <li><img src="images/s9.jpg" /><a href="#">Category</a><p>Rs 750</p></li>
-                            </ul>
-                        </div>
+                        <div class="clear"></div>
+                        <h3 class="m_3">Sản phẩm khác</h3>
                     </div>
                     <div class="rsidebar span_1_of_left">
                         <h5 class="m_1">Sản phẩm</h5>
-                        <%                                                for (Category d : categoryDAO.getListAllCategory()) {
+                        <%
+                            for (Category d : categoryDAO.getListAllCategory()) {
                         %>
                         <li><a href="product.jsp?category=<%=d.getCategoryID()%>"><%=d.getCategoryName()%></a></li>
                             <%
@@ -68,6 +110,7 @@
                             %>
                     </div>
                     <div class="clear"></div>
+
                 </div>
                 <div class="clear"></div>
             </div>
