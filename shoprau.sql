@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: shoprau
 -- ------------------------------------------------------
--- Server version	5.6.22-log
+-- Server version	5.7.18-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,136 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `bill`
---
-
-DROP TABLE IF EXISTS `bill`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bill` (
-  `bill_id` bigint(20) NOT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
-  `total` double DEFAULT NULL,
-  `payment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address` longtext COLLATE utf8_unicode_ci,
-  `date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`bill_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bill`
---
-
-LOCK TABLES `bill` WRITE;
-/*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-INSERT INTO `bill` VALUES (1463295350519,1463056081952,13,'Live','123 - Q1 - TPHCM','2016-05-15 06:55:50'),(1463297481103,1463056081950,7,'Bank transfer','123 - Q1 - TPHCM','2016-05-15 07:31:21');
-/*!40000 ALTER TABLE `bill` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `bill_detail`
---
-
-DROP TABLE IF EXISTS `bill_detail`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `bill_detail` (
-  `bill_detail_id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `bill_id` bigint(20) DEFAULT NULL,
-  `product_id` bigint(20) DEFAULT NULL,
-  `price` double DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  PRIMARY KEY (`bill_detail_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bill_detail`
---
-
-LOCK TABLES `bill_detail` WRITE;
-/*!40000 ALTER TABLE `bill_detail` DISABLE KEYS */;
-INSERT INTO `bill_detail` VALUES (4,1463295350519,1,2,1),(5,1463295350519,2,3,1),(6,1463295350519,3,4,2),(7,1463297481103,1,2,2),(8,1463297481103,2,3,1);
-/*!40000 ALTER TABLE `bill_detail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `category`
---
-
-DROP TABLE IF EXISTS `category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `category` (
-  `category_id` bigint(11) NOT NULL,
-  `category_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `category`
---
-
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Name 1'),(2,'Name 2'),(3,'Name 3');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `product`
---
-
-DROP TABLE IF EXISTS `product`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product` (
-  `product_id` bigint(20) NOT NULL,
-  `category_id` bigint(20) DEFAULT NULL,
-  `product_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `product_image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `product_price` double DEFAULT NULL,
-  `product_description` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Dumping data for table `product`
 --
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,1,'product 1','images/pi1.jpg',2,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(2,1,'product 2','images/pi2.jpg',3,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(3,1,'product 3','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(4,1,'product 4','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(5,1,'product 5','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(6,1,'product 6','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(7,1,'product 7','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(8,1,'product 8','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(9,1,'product 9','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(10,1,'product 10','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),(11,1,'product 11','images/pi3.jpg',4,'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.');
+INSERT INTO `product` VALUES (1,3,'7up','/image/7up.jpg',18,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(2,3,'Bia','/image/ba.jpg',10,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,0),(3,1,'Bầu','/image/bau.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(4,1,'Bí ngô','/image/bingo.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,1),(5,2,'Bơ','/image/bo.jpg',60,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,0),(6,2,'Bưởi','/image/buoi.jpg',70,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(7,1,'Cà chua','/image/cachua.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,0),(8,1,'Cà chua bi','/image/cachuabi.jpg',40,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,0),(9,1,'Cải','/image/cai.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(10,1,'Cải bắp','/image/caibap.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(11,1,'Cải chíp','/image/caichip.jpg',25,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(12,1,'Cải ngồng','/image/caingon.jpg',27,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(13,1,'Cải ngọt','/image/caingot.jpg',29,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(14,1,'Cải thảo','/image/caithao.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(15,2,'Cam','/image/cam.jpg',50,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,1),(16,1,'Cần tây','/image/cantay.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(17,1,'Cà rốt','/image/carot.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(18,1,'Cà tím','/image/catim.jpg',23,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(19,4,'Cerers','/image/cerers.jpg',60,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(20,2,'Chuối','/image/chuoi.jpg',25,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(21,3,'Coca Cola','/image/coca.jpg',10,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,0),(22,1,'Củ dền','/image/cuden.jpg',90,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(23,2,'Dâu tây','/image/dautay.jpg',100,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,0),(24,1,'Dưa chuột','/image/duachuot.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(25,2,'Dưa gang','/image/duagang.jpg',80,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(26,4,'GAC','/image/gac.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(27,1,'Hành tây','/image/hanhtay.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(28,1,'Khoai lang','/image/khoailang.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(29,2,'Lê','/image/le.jpg',50,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(30,4,'Malee','/image/malee.jpg',40,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(31,1,'Ngô ngọt','/image/ngongot.jpg',23,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(32,2,'Nhãn','/image/nhan.jpg',40,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(33,2,'Nho','/image/ngo.jpg',90,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(34,4,'Nước ép cam','/image/nuoccam.jpn',40,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(35,4,'Nước ép dâu','/image/nuocdau.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(36,4,'Nước ép Nhật','/image/nuocnhat.jpg',10,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(37,4,'Nước ép xoài','/image/nuocxoai.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(38,2,'Ổi','/image/oi.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(39,3,'Pepsi','/image/pepsi.jpg',10,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(40,2,'Quýt','/image/quyt.jpg',40,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(41,1,'Rau khoai lang','/image/raukhoailang.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(42,4,'Spicy','/image/spicy.jpg',12,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(43,3,'Sprite','/image/sprite.jpg',23,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,0),(44,3,'Sting','/image/sting.jpg',10,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',0,1),(45,1,'Súp lơ','/image/suplo.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,1),(46,1,'Xà lách','/image/xalach.jpg',20,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',NULL,NULL),(47,1,'Xà lách xoăn','/image/xalachxoan.jpg',30,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,NULL),(48,2,'Xoài','/image/xoai.jpg',60,'Là loại thực phẩm giàu dinh dưỡng, bổ sung thêm nhiều chất, giúp tăng sức đề kháng.',1,NULL),(49,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `user_id` bigint(20) NOT NULL,
-  `user_email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_pass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_role` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1463056081950,'truongtungduong9x@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','\0'),(1463056081952,'blogkenhlaptrinh@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','\0');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -157,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-11  2:34:57
+-- Dump completed on 2017-11-15 16:39:23

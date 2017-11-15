@@ -36,12 +36,21 @@
                                         <label for="modlgn_passwd">Password</label>
                                         <input id="modlgn_passwd" type="password" name="pass" class="inputbox" size="18" autocomplete="off">
                                     </p>
+<<<<<<< HEAD
+=======
+                                    
+>>>>>>> 2f5c229dce1c879663e37cc93e666a6ab14beb54
                                     <div class="remember">
                                         <p id="login-form-remember">
                                             <label for="modlgn_remember"><a href="#">Quên mật khẩu ? </a></label>
                                         </p>
                                         <input type="hidden" value="login" name="command">
+<<<<<<< HEAD
                                         <input type="submit" name="login" class="button" value="Login"><div class="clear"></div>
+=======
+                                        <input type="submit" name="login" class="button" value="Login">
+                                        <div class="clear"></div>
+>>>>>>> 2f5c229dce1c879663e37cc93e666a6ab14beb54
                                     </div>
                                 </fieldset>
                             </form>

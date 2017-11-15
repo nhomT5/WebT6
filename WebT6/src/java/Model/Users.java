@@ -16,6 +16,33 @@ public class Users {
     private String userEmail;
     private String userPass;
     private boolean userRole;
+    private String userCountry;
+    private String userAddress;
+    private boolean userSex;
+
+    public String getUserCountry() {
+        return userCountry;
+    }
+
+    public void setUserCountry(String userCountry) {
+        this.userCountry = userCountry;
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress;
+    }
+
+    public boolean isUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(boolean userSex) {
+        this.userSex = userSex;
+    }
 
     public Users() {
     }

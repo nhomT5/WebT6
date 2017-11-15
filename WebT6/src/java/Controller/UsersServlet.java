@@ -34,10 +34,14 @@ public class UsersServlet extends HttpServlet {
         switch (command) {
             case "insert":
                 users.setUserID(new java.util.Date().getTime());
+                users.setUserName(request.getParameter("username"));
                 users.setUserEmail(request.getParameter("email"));
-                users.setUserPass(request.getParameter(MD5.encryption("pass")));
+                users.setUserPass(MD5.encryption(request.getParameter("pass")));
+                users.setUserAddress(request.getParameter("address"));
+                users.setUserCountry(request.getParameter("country"));
+                users.setUserSex(true);
                 users.setUserRole(false);
-                usersDAO.insertUser(users);
+                                 usersDAO.insertUser(users);
                 session.setAttribute("user", users);
                 url = "/index.jsp";
                 break;
@@ -55,6 +59,6 @@ public class UsersServlet extends HttpServlet {
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);
 
-    }
+     }
 
 }
