@@ -82,20 +82,25 @@
                 <div class="main">
                     <div class="wrap">
                         <div class="cont span_2_of_3">
-                            <div class="grid images_3_of_2">
+                            
+                            <div class="grid images_3_of_2 inner_content">
+                                <div class="box-single">
                                 <img class="" src="<%=product.getProductImage()%>" class="img-responsive" />
                             <div class="clearfix"></div>
+                        </div>
                         </div>
                         <div class="desc1 span_3_of_2">
                             <h3 class="m_3"><%=product.getProductName()%> </h3>
                             <p class="m_5"><%=product.getProductPrice()%> đ</p>
                             <div class="btn_form">
                                 <form>
-                                    <input type="submit" value="buy" title="">
+                                    <input type="hidden" value="plus" name="command">
+                                    <input type="submit"  name="plus" value="Thêm vào giỏ hàng" title="">
                                 </form>
                             </div>
                             <p class="m_text2"><%=product.getProductDescription()%></p>
                         </div>
+                        
                         <div class="clear"></div>
                         <h3 class="m_3">Sản phẩm khác</h3>
                     </div>

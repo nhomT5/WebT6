@@ -4,16 +4,33 @@
 <%@page import="DAO.ProductDAO"%>
 <%@page import="DAO.CategoryDAO"%>
 <%@page import="Model.Category"%>
+<%@page import="java.util.ArrayList"%>
 
 <div class="mens"> 
     <%
         ProductDAO productDAO = new ProductDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
 
-        String category_id = "";
-        if (request.getParameter("category") != null) {
-            category_id = request.getParameter("category");
+        long categoryID = 0;
+        if (request.getParameter("categoryID") != null) {
+            categoryID = (long) Long.parseLong(request.getParameter("categoryID"));
         }
+        int pages = 0, firstResult = 0, maxResult = 0, total = 0;
+        if (request.getParameter("pages") != null) {
+            pages = (int) Integer.parseInt(request.getParameter("pages"));
+        }
+
+        total = productDAO.countProductByCategory(categoryID);
+        if (total <= 4) {
+            firstResult = 1;
+            maxResult = total;
+        } else {
+            firstResult = (pages - 1) * 4;
+            maxResult = 4;
+        }
+
+        ArrayList<Product> listProduct = productDAO.getListProductByNav(
+                categoryID, firstResult, maxResult);
 
     %>
     <div class="main">
@@ -24,7 +41,7 @@
                     <%    for (Product pr : productDAO.getListProductNew()) {
                     %>
                     <div class="col_1_of_3 span_1_of_3">
-                        <a href="single.jsp?productID=<%=pr.getProductID()%>">
+                        <a href="single.jsp?productID=<%=pr.getProductID()%>&pages=1">
                             <div class="inner_content clearfix">
                                 <div class="product_image">
                                     <img src="<%=pr.getProductImage()%>" alt=""/>
@@ -45,7 +62,12 @@
                     </div> 
                     <%}%>
                 </div>               
-
+                <ul class="dc_pagination trang">
+                    <li><a>Trang</a></li>
+                        <%for (int i = 1; i <= (total / 4) + 1; i++) {%>
+                    <li><a href="product.jsp?categoryID=<%=categoryID%>&pages=<%=i%>"><%=i%></a></li>
+                        <%}%>
+                </ul>
             </div>
 
             <div class="rsidebar span_1_of_left">
@@ -86,6 +108,12 @@
                     </div>
                     <%}%>
                 </div>
+                <ul class="dc_pagination trang">
+                    <li><a>Trang</a></li>
+                        <%for (int i = 1; i <= (total / 4) + 1; i++) {%>
+                    <li><a href="product.jsp?categoryID=<%=categoryID%>&pages=<%=i%>"><%=i%></a></li>
+                        <%}%>
+                </ul>
             </div>
             <div class="clear"></div>
         </div>

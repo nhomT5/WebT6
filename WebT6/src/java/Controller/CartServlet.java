@@ -28,6 +28,7 @@ public class CartServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String command = request.getParameter("command");
+        String url = "";
         String productID = request.getParameter("productID");
         Cart cart = (Cart) session.getAttribute("cart");
         
@@ -52,6 +53,7 @@ public class CartServlet extends HttpServlet {
             response.sendRedirect("/shoprau/index.jsp");
         }
         session.setAttribute("cart", cart);
+        url = "/index.jsp";
         response.sendRedirect("/shoprau/index.jsp");
     }
     

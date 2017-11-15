@@ -63,8 +63,12 @@
                                                     <span class="actual"><%=p.getProductPrice()%>đ</span>
                                                 </div>
                                             </div>
-                                            <div class="cart-right"> </div>
-                                            <div class="clear"></div>
+                                            <div class="cart-right" href="CartServlet?command=plus&productID=<%=p.getProductID()%>">
+                                                
+                                                <div class="clear"></div>
+                                                
+                                            </div>
+                                        </div>
                                         </div>				
                                     </div>
                                 </a>
@@ -73,6 +77,7 @@
                         </div>
                         <div class="clear"></div>
                         <ul class="dc_pagination trang">
+                            <li><a>Trang</a></li>
                             <%for (int i = 1; i <= (total / 8) + 1; i++) {%>
                             <li><a href="product.jsp?categoryID=<%=categoryID%>&pages=<%=i%>"><%=i%></a></li>
                                 <%}%>
