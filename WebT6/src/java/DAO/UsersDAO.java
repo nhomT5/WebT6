@@ -38,11 +38,14 @@ public class UsersDAO {
         }
         return false;
     }
+    
+       
+    
 
     // phương thức thêm tài khoản
     public boolean insertUser(Users u) {
         Connection connection = DBConnect.getConnection();
-        String sql = "INSERT INTO users VALUES(?.?,?,?,?)";
+        String sql = "INSERT INTO users VALUES(?,?,?,?,?.?,?,?)";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
             ps.setLong(1, u.getUserID());
@@ -50,6 +53,9 @@ public class UsersDAO {
             ps.setString(3, u.getUserEmail());
             ps.setString(4, u.getUserPass());
             ps.setBoolean(5, u.isUserRole());
+            ps.setBoolean(6,u.isUserSex());
+            ps.setString(7,u.getUserAddress());
+            ps.setString(8, u.getUserCountry());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
